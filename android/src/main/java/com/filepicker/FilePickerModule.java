@@ -62,7 +62,7 @@ public class FilePickerModule extends ReactContextBaseJavaModule implements Acti
             callback.invoke(response);
             return;
         }
-		
+
 		launchFileChooser(callback);
     }
 
@@ -98,6 +98,11 @@ public class FilePickerModule extends ReactContextBaseJavaModule implements Acti
         } catch (ActivityNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    // R.N > 33
+    public void onActivityResult(final Activity activity, final int requestCode, final int resultCode, final Intent data) {
+
     }
 
     public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
