@@ -9,7 +9,7 @@ const DEFAULT_OPTIONS = {
 
 module.exports = {
   ...FilePickerManager,
-  showImagePicker: function showImagePicker(options, callback) {
+  showFilePicker: function showFilePicker(options, callback) {
     if (typeof options === 'function') {
       callback = options;
       options = {};
