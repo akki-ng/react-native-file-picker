@@ -102,7 +102,7 @@ public class FilePickerModule extends ReactContextBaseJavaModule implements Acti
 
     // R.N > 33
     public void onActivityResult(final Activity activity, final int requestCode, final int resultCode, final Intent data) {
-
+        onActivityResult(requestCode, resultCode, data);
     }
 
     public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
