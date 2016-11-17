@@ -26,9 +26,26 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.bridge.WritableMap;
-
+import android.webkit.MimeTypeMap;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.DateFormat;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
+import java.util.UUID;
 
 public class FilePickerModule extends ReactContextBaseJavaModule implements ActivityEventListener {
 
@@ -63,7 +80,7 @@ public class FilePickerModule extends ReactContextBaseJavaModule implements Acti
             return;
         }
 
-		launchFileChooser(callback);
+        launchFileChooser(callback);
     }
 
     // NOTE: Currently not reentrant / doesn't support concurrent requests
@@ -125,10 +142,34 @@ public class FilePickerModule extends ReactContextBaseJavaModule implements Acti
             path = getPath(currentActivity, uri);
             if (path != null) {
                 response.putString("path", path);
+                putExtraFileInfo(path, response);
+                response.putString("type", this.getMimeType(path));
             }
             mCallback.invoke(response);
         }
     }
+
+    private static String getMimeType(String fileUrl) {
+        String extension = MimeTypeMap.getFileExtensionFromUrl(fileUrl);
+        return MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension);
+    }
+
+    private void putExtraFileInfo(final String path, WritableMap response) {
+        // size && filename
+        try {
+          File f = new File(path);
+          response.putDouble("fileSize", f.length());
+          response.putString("fileName", f.getName());
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+
+        // type
+        String extension = MimeTypeMap.getFileExtensionFromUrl(path);
+        if (extension != null) {
+          response.putString("type", MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension));
+        }
+      }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     public static String getPath(final Context context, final Uri uri) {
