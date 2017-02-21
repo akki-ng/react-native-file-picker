@@ -123,15 +123,10 @@ public class FilePickerModule extends ReactContextBaseJavaModule implements Acti
     }
 
     public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-
         // user cancel
         if (resultCode != Activity.RESULT_OK) {
-            /*
-            //Handling cancel
-            response.putBoolean("didCancel", true);
-            mCallback.invoke(response);
-
-            */
+            // response.putBoolean("didCancel", true);
+            // mCallback.invoke(response);
             return;
         }
 
@@ -147,7 +142,7 @@ public class FilePickerModule extends ReactContextBaseJavaModule implements Acti
             if (path != null) {
                 response.putString("path", path);
                 putExtraFileInfo(path, response);
-                response.putString("type", this.getMimeType(path));
+                response.putString("type", this.getMimeType(uri.toString()));
             }
             mCallback.invoke(response);
         }

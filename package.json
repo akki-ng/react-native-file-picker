@@ -1,12 +1,67 @@
 {
-  "name": "react-native-file-picker",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Lichwa/react-native-file-picker.git"
+  "_args": [
+    [
+      {
+        "hosted": {
+          "directUrl": "https://raw.githubusercontent.com/akki-ng/react-native-file-picker/master/package.json",
+          "gitUrl": "git://github.com/akki-ng/react-native-file-picker.git",
+          "httpsUrl": "git+https://github.com/akki-ng/react-native-file-picker.git",
+          "shortcut": "github:akki-ng/react-native-file-picker",
+          "ssh": "git@github.com:akki-ng/react-native-file-picker.git",
+          "sshUrl": "git+ssh://git@github.com/akki-ng/react-native-file-picker.git",
+          "type": "github"
+        },
+        "name": null,
+        "raw": "git+https://github.com/akki-ng/react-native-file-picker.git",
+        "rawSpec": "git+https://github.com/akki-ng/react-native-file-picker.git",
+        "scope": null,
+        "spec": "git+https://github.com/akki-ng/react-native-file-picker.git",
+        "type": "hosted"
+      },
+      "/Users/giridharsampathkumar/ng_cap_projects/NgSalesApp"
+    ]
+  ],
+  "_from": "git+https://github.com/akki-ng/react-native-file-picker.git",
+  "_id": "react-native-file-picker@0.0.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/react-native-file-picker",
+  "_phantomChildren": {},
+  "_requested": {
+    "hosted": {
+      "directUrl": "https://raw.githubusercontent.com/akki-ng/react-native-file-picker/master/package.json",
+      "gitUrl": "git://github.com/akki-ng/react-native-file-picker.git",
+      "httpsUrl": "git+https://github.com/akki-ng/react-native-file-picker.git",
+      "shortcut": "github:akki-ng/react-native-file-picker",
+      "ssh": "git@github.com:akki-ng/react-native-file-picker.git",
+      "sshUrl": "git+ssh://git@github.com/akki-ng/react-native-file-picker.git",
+      "type": "github"
+    },
+    "name": null,
+    "raw": "git+https://github.com/akki-ng/react-native-file-picker.git",
+    "rawSpec": "git+https://github.com/akki-ng/react-native-file-picker.git",
+    "scope": null,
+    "spec": "git+https://github.com/akki-ng/react-native-file-picker.git",
+    "type": "hosted"
   },
-  "version": "0.0.1",
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git+https://github.com/akki-ng/react-native-file-picker.git#f1f10af71cf160be72508e269be4019b12945aba",
+  "_shasum": "3f4da21a597822f88f778fd74fb4aab8e5a4a20e",
+  "_shrinkwrap": null,
+  "_spec": "git+https://github.com/akki-ng/react-native-file-picker.git",
+  "_where": "/Users/giridharsampathkumar/ng_cap_projects/NgSalesApp",
+  "bugs": {
+    "url": "https://github.com/Lichwa/react-native-file-picker/issues"
+  },
+  "dependencies": {},
   "description": "A React Native module that allows you to use native UI to select file from the device library",
-  "nativePackage": true,
+  "devDependencies": {
+    "react-native": "^0.21.0"
+  },
+  "gitHead": "f1f10af71cf160be72508e269be4019b12945aba",
+  "homepage": "https://github.com/Lichwa/react-native-file-picker#readme",
   "keywords": [
     "react-native",
     "react-native-file-picker",
@@ -15,7 +70,14 @@
     "file",
     "picker"
   ],
-  "devDependencies": {
-    "react-native": "^0.21.0"
-  }
+  "name": "react-native-file-picker",
+  "nativePackage": true,
+  "optionalDependencies": {},
+  "readme": "# react-native-file-picker\nA React Native module that allows you to use native UI to select a file from the device library\nBased on [react-native-image-picker](https://github.com/marcshilling/react-native-image-picker)\n\n## Install\n\n### iOS\n1. `npm install react-native-fille-picker@latest --save`\n2. In the XCode's \"Project navigator\", right click on your project's Libraries folder ➜ `Add Files to <...>`\n3. Go to `node_modules` ➜ `react-native-file-picker` ➜ `ios` ➜ select `RNFilePicker.xcodeproj`\n4. Add `RNFilePicker.a` to `Build Phases -> Link Binary With Libraries`\n5. Compile and have fun\n\n### Android\n1. `npm install react-native-file-picker@latest --save`\n\n```gradle\n// file: android/settings.gradle\n...\n\ninclude ':react-native-file-picker'\nproject(':react-native-file-picker').projectDir = new File(settingsDir, '../node_modules/react-native-file-picker/android')\n```\n```gradle\n// file: android/app/build.gradle\n...\n\ndependencies {\n    ...\n    compile project(':react-native-file-picker')\n}\n```\n```xml\n<!-- file: android/src/main/AndroidManifest.xml -->\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    package=\"com.myApp\">\n\n    <uses-permission android:name=\"android.permission.INTERNET\" />\n\n    <!-- add following permissions -->\n    <uses-permission android:name=\"android.permission.CAMERA\" />\n    <uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>\n    <uses-feature android:name=\"android.hardware.camera\" android:required=\"true\"/>\n    <uses-feature android:name=\"android.hardware.camera.autofocus\" />\n    <!-- -->\n    ...\n```\n```java\n// file: MainActivity.java\n...\n\nimport com.filepicker.FilePickerPackage; // import package\n\npublic class MainActivity extends ReactActivity {\n\n   /**\n   * A list of packages used by the app. If the app uses additional views\n   * or modules besides the default ones, add more packages here.\n   */\n    @Override\n    protected List<ReactPackage> getPackages() {\n        return Arrays.<ReactPackage>asList(\n            new MainReactPackage(),\n            new FilePickerPackage() // Add package\n        );\n    }\n...\n}\n\n```\n## Usage\n1. In your React Native javascript code, bring in the native module:\n\n  ```javascript\nvar FilePickerManager = require('NativeModules').FilePickerManager;\n  ```\n2. Use it like so:\n\n  When you want to display the picker:\n  ```javascript\n\n  FilePickerManager.showFilePicker((response) => {\n    console.log('Response = ', response);\n\n    if (response.didCancel) {\n      console.log('User cancelled file picker');\n    }\n    else if (response.error) {\n      console.log('FilePickerManager Error: ', response.error);\n    }\n    else {\n      this.setState({\n        file: response\n      });\n    }\n  });\n  ```\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lichwa/react-native-file-picker.git"
+  },
+  "version": "0.0.1"
 }
