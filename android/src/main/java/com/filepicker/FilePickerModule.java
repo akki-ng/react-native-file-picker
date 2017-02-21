@@ -126,8 +126,12 @@ public class FilePickerModule extends ReactContextBaseJavaModule implements Acti
 
         // user cancel
         if (resultCode != Activity.RESULT_OK) {
+            /*
+            //Handling cancel
             response.putBoolean("didCancel", true);
             mCallback.invoke(response);
+
+            */
             return;
         }
 
