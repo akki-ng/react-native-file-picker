@@ -294,4 +294,7 @@ public class FilePickerModule extends ReactContextBaseJavaModule implements Acti
         return null;
     }
 
+    public void onNewIntent(Intent intent) {
+       }
+
 }
